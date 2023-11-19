@@ -1,5 +1,5 @@
 // KML ファイルの URL を指定します。をロードします。
-var kmlUrl = "https://example.com/sample.kml";
+var kmlUrl = "https://odafc.github.io/ar/test.kml";
 // Google Maps API のキーを指定します。
 var apiKey = "AIzaSyBSQVrCAwF4Ca8khoLJ9atY7UYghkJNdVQ";
 // Google Maps API をロードします。
