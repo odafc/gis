@@ -1,22 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>WebAR KML</title>
-    <style>
-        body { margin: 0; overflow: hidden; }
-        canvas { width: 100%; height: 100%; }
-    </style>
+  <meta charset="UTF-8">
+  <title>WebAR with KML</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #arjsScene {
+      height: 100vh;
+    }
+  </style>
 </head>
 <body>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/2.2.2/aframe/build/aframe-ar.js"></script>
-    <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <a-marker preset="hiro">
-            <a-entity kml="src: url(test.kml)"></a-entity>
-        </a-marker>
-        <a-entity camera></a-entity>
-    </a-scene>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.rawgit.com/mrdoob/three.js/r128/build/three.js"></script>
+  <script src="https://cdn.rawgit.com/mrdoob/three.js/r128/examples/js/loaders/KMZLoader.js"></script>
+
+  <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam;">
+    <a-marker preset="hiro">
+      <a-entity id="kmlGroup"></a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <script>
+    // カメラ位置の要素の取得（a-frameのストアから取得）
+    const cameraEl = document.querySelector("[camera]");
+
+    // カメラ位置の更新（GPSの位置情報を利用）
+    function updateCameraPosition(position) {
+      cameraEl.setAttribute('gps-entity-place', {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      });
+      cameraEl.setAttribute('rotation', {
+        x: 0,
+        y: THREE.Math.degToRad(position.coords.heading),
+        z: 0
+      });
+    }
+
+    // 位置情報の取得（GPSを利用）
+    function getGeolocation() {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.watchPosition(updateCameraPosition);
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    }
+
+    // KMLファイルの読み込み
+    function loadKml() {
+      const loader = new THREE.KMZLoader();
+
+      loader.load('test.kml', function (kmz) {
+        const kml = kmz.scene;
+
+        // ポイントやラインをAR上に表示する
+        kml.traverse(function (child) {
+          if (child.isMesh) {
+            child.material.side = THREE.DoubleSide;
+          }
+        });
+
+        const kmlGroup = document.getElementById('kmlGroup');
+        kmlGroup.appendChild(kml);
+      });
+    }
+
+    // サイトのロード時に呼び出す処理
+    window.addEventListener('load', function () {
+      getGeolocation();
+      loadKml();
+    });
+  </script>
 </body>
 </html>
