@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAR with KML</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+
+    <a-scene
+        vr-mode-ui="enabled: false"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    >
+        <!-- Load KML file and display AR content -->
+        <a-kml-model src="path/to/your/file.kml"></a-kml-model>
+
+        <!-- You can add more AR elements here based on your KML data -->
+
+        <a-entity camera></a-entity>
+    </a-scene>
+
+</body>
+</html>
