@@ -1,16 +1,74 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-        <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.js"></script>
-        <script src="https://odafc.github.io/ar/ar.js"></script>
-      </head>
-      <body style="margin: 0; overflow: hidden;">
-        <div id="map" style="width: 100%; height: 100%;"></div>
-        <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-          <a-camera gps-camera rotation-reader></a-camera>
-        </a-scene>
-      </body>
-      
+<head>
+    <meta charset="UTF-8">
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  <script>
+    // KMLファイルのURLを指定する
+    var kmlUrl = "https://odafc.github.io/ar/test.kml";
+
+    // KMLファイルを読み込んで解析する関数
+    function loadKml(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.onload = function() {
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
+        var placemarks = xmlDoc.getElementsByTagName("Placemark");
+        for (var i = 0; i < placemarks.length; i++) {
+          var name = placemarks[i].getElementsByTagName("name")[0].textContent;
+          var coordinates = placemarks[i].getElementsByTagName("coordinates")[0].textContent;
+          var coords = coordinates.split(",");
+          var longitude = parseFloat(coords[0]);
+          var latitude = parseFloat(coords[1]);
+          var altitude = parseFloat(coords[2]);
+          createArEntity(name, longitude, latitude, altitude);
+        }
+      };
+      xhr.send();
+    }
+
+    // ARで表示するエンティティを作成する関数
+    function createArEntity(name, longitude, latitude, altitude) {
+      var scene = document.querySelector("a-scene");
+      var entity = document.createElement("a-entity");
+      entity.setAttribute("gps-entity-place", "latitude: " + latitude + "; longitude: " + longitude + ";");
+      entity.setAttribute("text", "value: " + name + "; align: center;");
+      entity.setAttribute("scale", "5 5 5");
+      scene.appendChild(entity);
+    }
+
+    // GPSの位置情報を取得する関数
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    // GPSの位置情報を表示する関数
+    function showPosition(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      var altitude = position.coords.altitude;
+      var accuracy = position.coords.accuracy;
+      var info = document.getElementById("info");
+      info.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude + "<br>Altitude: " + altitude + "<br>Accuracy: " + accuracy;
+    }
+
+    // ページが読み込まれたときに実行する関数
+    function init() {
+      loadKml(kmlUrl);
+      getLocation();
+    }
+  </script>
+</head>
+<body onload="init()" style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-camera gps-camera rotation-reader></a-camera>
+  </a-scene>
+  <div id="info" style="position: absolute; top: 10px; left: 10px; color: white;"></div>
+</body>
 </html>
