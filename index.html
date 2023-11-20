@@ -17,10 +17,11 @@
 <script src="./threejs/loaders/GLTFLoader.js"></script>
 <script src="./threejs/DeviceOrientationControls.js"></script>
 <script src="./mobile.js"></script>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 </head>
 <body>
 
-<video id="video" autoplay></video>
+<a-camera gps-camera rotation-reader id="video"></a-camera>
 <div id="view">
   <div id="northarrow"></div>
   <div id="navigation"></div>
