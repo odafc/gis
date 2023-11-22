@@ -16,8 +16,8 @@ const staticLoadPlaces = () => [
         {
         label: 'p3',
         location: {
-          latitude:   35.1910310, 
-          longitude: 132.500978,
+          latitude:   35.19169271634259, 
+          longitude: 132.5011795415442,
         },
       },
   ];
