@@ -20,7 +20,7 @@ const staticLoadPlaces = () => [
       <a-entity
         gltf-model="${model}"
         scale="${x} ${y} ${z}"
-        light=" type: ambient; color: #ffffff; intensity: 1.5 "
+        // light=" type: ambient; color: #ffffff; intensity: 1.5 "
         gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
       ></a-entity>
     `)
