@@ -30,7 +30,7 @@ const renderPlace = ({ location }) => {
   const $entity = createEntity({
     location,
     model: '#asset-eevee',
-    scale: ['0.5', '0.5', '0.5'],
+    scale: ['2', '2', '2'],
   });
   $scene.appendChild($entity);
 };
