@@ -27,14 +27,17 @@
   
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<!-- <body style="margin: 0; overflow: hidden;">
     <a-scene
       vr-mode-ui="enabled: false;"
       loading-screen="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
       embedded
-    >
+    > -->
+  <body>
+    <a-scene embedded arjs>
+  
       <a-entity gps-entity-place="latitude: 35.20324484521119 ; longitude: 132.48921259614164"></a-entity>
       <a-entity gps-entity-place="latitude: 35.20324484521119; longitude: 132.48980804651927"></a-entity>
       <a-entity line="start: 35.20324484521119 132.48921259614164; end: 35.20324484521119 132.48980804651927; color: red; thickness: 5; "></a-entity>
