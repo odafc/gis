@@ -5,6 +5,26 @@
   <title> Location-based AR.js demo </title>
   <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+     <script>
+      AFRAME.registerComponent('line', {
+        schema: {
+          start: {type: 'vec3'},
+          end: {type: 'vec3'},
+          color: {type: 'color', default: '#000'},
+          thickness: {type: 'number', default: 1}
+        },
+        init: function () {
+          var material = new THREE.LineBasicMaterial({color: this.data.color});
+          var geometry = new THREE.Geometry();
+          geometry.vertices.push(this.data.start, this.data.end);
+          var line = new THREE.Line(geometry, material);
+          line.material.linewidth = this.data.thickness;
+          this.el.object3D.add(line);
+        }
+      });
+    </script>
+  
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -17,7 +37,7 @@
     >
       <a-entity gps-entity-place="latitude: 35.20324484521119 ; longitude: 132.48921259614164"></a-entity>
       <a-entity gps-entity-place="latitude: 35.20324484521119; longitude: 132.48980804651927"></a-entity>
-      <a-entity line="start: 35.20324484521119 132.48921259614164; end: 35.20324484521119 132.48980804651927; color: red;"></a-entity>
+      <a-entity line="start: 35.20324484521119 132.48921259614164; end: 35.20324484521119 132.48980804651927; color: red; thickness: 5; "></a-entity>
     <a-camera gps-camera rotation-reader></a-camera>
   </a-scene>
 </body>
