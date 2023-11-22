@@ -2,11 +2,11 @@ const createPlaces = ({ latitude, longitude }) => [
     ['p1', 35.191143938313395, 132.5010111812519],
     ['p2', 35.1911328788817, 132.50099539303255],
     ['p3', 35.191129192404155, 132.50095028383444],
-  ].map(([label,  cy,  cx]) => ({
+  ].map(([label,  latitud,  longitud]) => ({
     label,
     location: {
-      latitude : cy,
-      longitude: cx,
+      latitude : latitude ,
+      longitude: longitude ,
     },
   }));
   
@@ -48,13 +48,13 @@ const createPlaces = ({ latitude, longitude }) => [
     const $entity = createEntity({ id: entityId, location, model: url, scale });
     $scene.appendChild($entity);
   
-    // const $button = document.querySelector('button[data-action="change"]');
-    // const buttonClickEventListener = () => {
-    //   $button.removeEventListener('click', buttonClickEventListener, false);
-    //   $scene.removeChild(document.getElementById(entityId));
-    //   renderPlace({ location }, count + 1);
-    // }
-    // $button.addEventListener('click', buttonClickEventListener);
+    const $button = document.querySelector('button[data-action="change"]');
+    const buttonClickEventListener = () => {
+      $button.removeEventListener('click', buttonClickEventListener, false);
+      $scene.removeChild(document.getElementById(entityId));
+      renderPlace({ location }, count + 1);
+    }
+    $button.addEventListener('click', buttonClickEventListener);
   };
   
   const main = async () => {
