@@ -38,7 +38,7 @@ const staticLoadPlaces = () => [
     const $entity = createEntity({
       location,
       model: '#asset-eevee',
-      scale: ['2', '2', '2'],
+      scale: ['1', '1', '1'],
     });
     $scene.appendChild($entity);
   };
