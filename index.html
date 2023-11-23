@@ -1,50 +1,69 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title> Location-based AR.js demo </title>
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-
-     <script>
-      AFRAME.registerComponent('line', {
-        schema: {
-          start: {type: 'vec3'},
-          end: {type: 'vec3'},
-          color: {type: 'color', default: '#000'},
-          thickness: {type: 'number', default: 1}
-        },
-        init: function () {
-          var material = new THREE.LineBasicMaterial({color: this.data.color});
-          var geometry = new THREE.Geometry();
-          geometry.vertices.push(this.data.start, this.data.end);
-          var line = new THREE.Line(geometry, material);
-          line.material.linewidth = this.data.thickness;
-          this.el.object3D.add(line);
-        }
-      });
-    </script>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR.js Thick Line Example</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.3.0/aframe/build/aframe-ar.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/ar.js/master/three.js"></script>
 </head>
-
-<!-- <body style="margin: 0; overflow: hidden;">
+<body>
     <a-scene
       vr-mode-ui="enabled: false;"
       loading-screen="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
       embedded
-    > -->
-  <body>
-    <a-scene embedded arjs>
-  
-      <a-entity gps-entity-place="latitude: 35.20324484521119 ; longitude: 132.48921259614164"></a-entity>
-      <a-entity gps-entity-place="latitude: 35.20324484521119; longitude: 132.48980804651927"></a-entity>
-      <a-entity line="start: 35.20324484521119 132.48921259614164; end: 35.20324484521119 132.48980804651927; color: red; thickness: 5; "></a-entity>
-    <a-camera gps-camera rotation-reader></a-camera>
-  </a-scene>
-</body>
+    >
+        <a-marker preset="hiro">
+            <a-entity position="0 0 0">
+                <!-- First marker -->
+            </a-entity>
+        </a-marker>
 
+        <a-marker preset="kanji">
+            <a-entity position="1 0 0">
+                <!-- Second marker -->
+            </a-entity>
+        </a-marker>
+
+        <!-- Line entity connecting the markers with increased line width -->
+        <a-entity id="line" line="color: red; lineWidth: 5;"></a-entity>
+      <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
+
+    <script>
+        // Function to convert latitude and longitude to AR world coordinates
+        function latLonToWorld(lat, lon, radius) {
+            // Convert latitude and longitude to radians
+            var latRad = THREE.Math.degToRad(lat);
+            var lonRad = THREE.Math.degToRad(lon);
+
+            // Calculate X, Y, Z coordinates in 3D space
+            var x = radius * Math.cos(latRad) * Math.cos(lonRad);
+            var y = radius * Math.sin(latRad);
+            var z = radius * Math.cos(latRad) * Math.sin(lonRad);
+
+            return { x, y, z };
+        }
+
+        // Set the latitude and longitude of the two points
+        var point1 = { lat: 37.7749, lon: -122.4194 }; // San Francisco
+        var point2 = { lat: 34.0522, lon: -118.2437 }; // Los Angeles
+
+        // AR scene radius (adjust as needed)
+        var arSceneRadius = 5;
+
+        // Convert latitude and longitude to AR world coordinates
+        var position1 = latLonToWorld(point1.lat, point1.lon, arSceneRadius);
+        var position2 = latLonToWorld(point2.lat, point2.lon, arSceneRadius);
+
+        // Set the line entity's start and end attributes based on the converted coordinates
+        var lineEntity = document.getElementById('line');
+        lineEntity.setAttribute('line', `start: ${position1.x} ${position1.y} ${position1.z}; end: ${position2.x} ${position2.y} ${position2.z}`);
+    </script>
+</body>
 </html>
 
 <!-- <!doctype html>
