@@ -70,7 +70,7 @@ const staticLoadPlaces = () => [
       <a-entity
         gltf-model="${model}"
         scale="${x} ${y} ${z}"
-        // light=" type: ambient; color: #ffffff; intensity: 1.5 "
+        light=" type: ambient; color: #ffffff; intensity: 1.5 "
         gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
       ></a-entity>
     `)
@@ -82,6 +82,15 @@ const staticLoadPlaces = () => [
   
     return $entity;
   };
+
+    const el = document.querySelector('[gps-entity-place]');
+        el.addEventListener('gps-entity-place-update-positon', (event) => {
+          if(event.detail.distance < 100) {
+            el.setAttribute('light','color: #ffff00');
+          } else {
+            el.setAttribute('light','color: #ffffff');
+          }
+        });
   
   const renderPlace = ({ location }) => {
     const $scene = document.querySelector('a-scene');
