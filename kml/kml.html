@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KMLファイル読み込みツール</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <input type="file" id="kmlFileInput" accept=".kml">
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#kmlFileInput').on('change', function(e) {
+                var file = e.target.files[0];
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    var kmlData = e.target.result;
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(kmlData, 'text/xml');
+
+                    var points = [];
+                    var placemarks = xmlDoc.getElementsByTagName('Placemark');
+                    for (var i = 0; i < placemarks.length; i++) {
+                        var placemark = placemarks[i];
+                        var label = placemark.getElementsByTagName('name')[0].textContent;
+                        var coordinates = placemark.getElementsByTagName('coordinates')[0].textContent;
+                        var [longitude, latitude] = coordinates.split(',');
+
+                        points.push({
+                            label: label,
+                            location: {
+                                latitude: parseFloat(latitude),
+                                longitude: parseFloat(longitude)
+                            }
+                        });
+                    }
+
+                    if (points.length > 0) {
+                        var firstPoint = points[0];
+                        var X = firstPoint.location.latitude;
+                        var Y = firstPoint.location.longitude;
+
+                        $('#result').text('X: ' + X + ', Y: ' + Y);
+                    } else {
+                        $('#result').text('No points found in the KML file.');
+                    }
+                };
+
+                reader.readAsText(file);
+            });
+        });
+    </script>
+</body>
+</html>
