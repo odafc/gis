@@ -26,5 +26,19 @@
     </a-scene>
 
     <script src="app.js"></script>
+
+     <script>
+      window.addEventListener('load', () => {
+        const el = document.querySelector('[gps-entity-place]');
+        el.addEventListener('gps-entity-place-update-positon', (event) => {
+          if(event.detail.distance < 100) {
+            el.setAttribute('light','color: #ffff00');
+          } else {
+            el.setAttribute('light','color: #ffffff');
+          }
+        });
+              });
+    </script>
+    
   </body>
 </html>
