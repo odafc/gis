@@ -1,69 +1,150 @@
+AR.jsを使用して2点以上の緯度経度の座標を結んだパスをAR上に表示するWebARサイトを作るためのコード例を提供します。以下のコードは、AR.js、Three.js、そしてGPSを使用して位置情報を取得し、それをAR上に表示する方法を示しています。
+
+```html
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR.js Thick Line Example</title>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>AR Path Visualization</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.3.0/aframe/build/aframe-ar.js"></script>
-    <script src="https://rawgit.com/jeromeetienne/ar.js/master/three.js"></script>
-</head>
-<body>
-    <a-scene
-      vr-mode-ui="enabled: false;"
-      loading-screen="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-      embedded
-    >
-        <a-marker preset="hiro">
-            <a-entity position="0 0 0">
-                <!-- First marker -->
-            </a-entity>
-        </a-marker>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.0/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r84/three.min.js"></script>
+  </head>
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-marker type="barcode" value="0">
+        <a-entity position="0 0 0">
+          <a-camera gps-camera rotation-reader></a-camera>
+        </a-entity>
+      </a-marker>
+        
+      <!-- Define the path geometry -->
+      <a-entity id="path" line="color: red; opacity: 0.8"></a-entity>
 
-        <a-marker preset="kanji">
-            <a-entity position="1 0 0">
-                <!-- Second marker -->
-            </a-entity>
-        </a-marker>
+      <a-entity gps-entity-place="latitude: 35.1910006; longitude: 132.5008423">
+        <a-sphere radius="0.1" color="blue"></a-sphere>
+      </a-entity>
+      <a-entity gps-entity-place="latitude: 35.19119512724098; longitude: 132.50105551179584">
+        <a-sphere radius="0.1" color="blue"></a-sphere>
+      </a-entity>
+      <!-- Add more entities for additional points -->
 
-        <!-- Line entity connecting the markers with increased line width -->
-        <a-entity id="line" line="color: red; lineWidth: 5;"></a-entity>
-      <a-camera gps-camera rotation-reader></a-camera>
+      <script>
+        AFRAME.registerComponent("gps-camera", {
+          schema: {
+            rotationReader: { default: false },
+          },
+          init: function () {
+            this.bindMethods();
+            this.addEventListeners();
+            this.setupARCamera();
+          },
+          bindMethods: function () {
+            this.setupARCamera = this.setupARCamera.bind(this);
+            this.onRotationUpdate = this.onRotationUpdate.bind(this);
+          },
+          addEventListeners: function () {
+            if (this.data.rotationReader) {
+              window.addEventListener("deviceorientation", this.onRotationUpdate);
+            }
+          },
+          setupARCamera: function () {
+            const cameraEl = this.el;
+            const gpsCamera = document.createElement("a-entity");
+            gpsCamera.setAttribute("gps-camera", "");
+            gpsCamera.setAttribute("rotation", "0 0 0");
+            cameraEl.appendChild(gpsCamera);
+            cameraEl.removeAttribute("gps-camera");
+          },
+          onRotationUpdate: function (event) {
+            const cameraEl = this.el;
+            const alpha = event.alpha;
+            const beta = event.beta;
+            const gamma = event.gamma;
+            cameraEl.setAttribute("rotation", `${gamma} ${alpha} ${-beta}`);
+          },
+        });
+
+        AFRAME.registerComponent("gps-entity-place", {
+          schema: {
+            latitude: { type: "number" },
+            longitude: { type: "number" },
+          },
+          init: function () {
+            const { latitude, longitude } = this.data;
+            const entity = this.el;
+
+            if (latitude && longitude) {
+              navigator.geolocation.getCurrentPosition(
+                (position) => {
+                  this.updatePosition(position);
+                },
+                (error) => {
+                  console.error(error);
+                }
+              );
+            }
+          },
+          updatePosition: function (position) {
+            const { latitude, longitude } = this.data;
+            const { coords } = position;
+            const { latitude: currentLatitude, longitude: currentLongitude } = coords;
+            const distance = this.calculateDistance(
+              currentLatitude,
+              currentLongitude,
+              latitude,
+              longitude
+            );
+            const bearing = this.calculateBearing(
+              currentLatitude,
+              currentLongitude,
+              latitude,
+              longitude
+            );
+            const { x, z } = this.calculatePosition(distance, bearing);
+            const entity = this.el;
+            entity.setAttribute("position", `${x} 0 ${z}`);
+          },
+          calculateDistance: function (lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the earth in km
+            const dLat = this.deg2rad(lat2 - lat1);
+            const dLon = this.deg2rad(lon2 - lon1);
+            const a =
+              Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(this.deg2rad(lat1)) *
+                Math.cos(this.deg2rad(lat2)) *
+                Math.sin(dLon / 2) *
+                Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const d = R * c; // Distance in km
+            return d * 1000; // Return distance in meters
+          },
+          calculateBearing: function (lat1, lon1, lat2, lon2) {
+            const dLon = this.deg2rad(lon2 - lon1);
+            const y = Math.sin(dLon) * Math.cos(this.deg2rad(lat2));
+            const x =
+              Math.cos(this.deg2rad(lat1)) * Math.sin(this.deg2rad(lat2)) -
+              Math.sin(this.deg2rad(lat1)) *
+                Math.cos(this.deg2rad(lat2)) *
+                Math.cos(dLon);
+            const brng = this.rad2deg(Math.atan2(y, x));
+            return (brng + 360) % 360;
+          },
+          calculatePosition: function (distance, bearing) {
+            const x = distance * Math.sin(this.deg2rad(bearing));
+            const z = distance * Math.cos(this.deg2rad(bearing));
+            return { x, z };
+          },
+          deg2rad: function (deg) {
+            return deg * (Math.PI / 180);
+          },
+          rad2deg: function (rad) {
+            return rad * (180 / Math.PI);
+          },
+        });
+      </script>
     </a-scene>
-
-    <script>
-        // Function to convert latitude and longitude to AR world coordinates
-        function latLonToWorld(lat, lon, radius) {
-            // Convert latitude and longitude to radians
-            var latRad = THREE.Math.degToRad(lat);
-            var lonRad = THREE.Math.degToRad(lon);
-
-            // Calculate X, Y, Z coordinates in 3D space
-            var x = radius * Math.cos(latRad) * Math.cos(lonRad);
-            var y = radius * Math.sin(latRad);
-            var z = radius * Math.cos(latRad) * Math.sin(lonRad);
-
-            return { x, y, z };
-        }
-
-        // Set the latitude and longitude of the two points
-        var point1 = { lat: 35.20323185213208, lon: 132.4890444569956 }; 
-        var point2 = { lat: 35.203250449033966, lon: 132.48980310021722 }; 
-
-        // AR scene radius (adjust as needed)
-        var arSceneRadius = 5;
-
-        // Convert latitude and longitude to AR world coordinates
-        var position1 = latLonToWorld(point1.lat, point1.lon, arSceneRadius);
-        var position2 = latLonToWorld(point2.lat, point2.lon, arSceneRadius);
-
-        // Set the line entity's start and end attributes based on the converted coordinates
-        var lineEntity = document.getElementById('line');
-        lineEntity.setAttribute('line', `start: ${position1.x} ${position1.y} ${position1.z}; end: ${position2.x} ${position2.y} ${position2.z}`);
-    </script>
-</body>
+  </body>
 </html>
 
 <!-- <!doctype html>
