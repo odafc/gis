@@ -25,6 +25,19 @@
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
+
+            <script>
+      window.addEventListener('load', () => {
+        const el = document.querySelector('[gps-entity-place]');
+        el.addEventListener('gps-entity-place-update-positon', (event) => {
+          if(event.detail.distance < 2) {
+            el.setAttribute('material','color: yellow');
+          } else {
+            el.setAttribute('material','color: red');
+          }
+        });
+      });
+    </script>
     </body>
 </html>
 
