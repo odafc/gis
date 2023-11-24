@@ -57,11 +57,6 @@ const staticLoadPlaces = () => [
       console.log('success', position);
     staticLoadPlaces().forEach(renderPlace);
     };
-
-    const successCallback2 = position => {
-    console.log(el.getObject3D('line'));
-    staticLoadPlaces().forEach(renderPlace);
-    };
   
     const errorCallback = error => {
       console.log('error', error);
@@ -70,7 +65,6 @@ const staticLoadPlaces = () => [
   
     navigator.geolocation.getCurrentPosition(
       successCallback,
-        successCallback2,
       errorCallback
     );
   };
