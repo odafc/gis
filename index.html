@@ -12,7 +12,6 @@
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false;">
         <a-marker type="barcode" value="0">
             <a-entity position="0 0 0">
-                <a-camera gps-camera rotation-reader></a-camera>
             </a-entity>
         </a-marker>
 
@@ -26,8 +25,10 @@
             <a-sphere radius="0.2" color="blue"></a-sphere>
         </a-entity>
         <!-- Add more entities for additional points -->
+        <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
 
-      <script>
+          <script>
         AFRAME.registerComponent("gps-camera", {
           schema: {
             rotationReader: { default: false },
@@ -141,7 +142,6 @@
           },
         });
       </script>
-    </a-scene>
 </body>
 </html>
 
