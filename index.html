@@ -17,20 +17,11 @@
             loading-screen="enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false;"
         >
-            <a-assets>
-                <a-asset-item
-                    id="animated-asset"
-                    src="https://daisukesudo.github.io/samples/arjs/step2/assets/eevee.gltf"
-                ></a-asset-item>
-            </a-assets>
-
-                <a-entity
-                    look-at="[gps-camera]"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset"
-                    scale="1 1 1"
-                    gps-entity-place="latitude: 35.19169522181586; longitude: 132.50117853358225;"
-                ></a-entity>
+          <a-box
+            material="color: red"
+            gps-entity-place="latitude: 35.2034012971901; longitude: 132.48911076169068;"
+            scale="30 30 30"
+          ></a-box>
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
