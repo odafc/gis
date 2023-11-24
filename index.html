@@ -29,7 +29,7 @@
       window.addEventListener('load', () => {
         const el = document.querySelector('[gps-entity-place]');
         el.addEventListener('gps-entity-place-update-positon', (event) => {
-        distanceMsg.textContent = `overs${event.detail.distance}m`;
+        distanceMsg.textContent = `${event.detail.distance}m`;
           if(event.detail.distance < 100 {
             el.setAttribute('material','color: yellow');
           } else {
