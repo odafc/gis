@@ -142,28 +142,7 @@
                 },
             });
 
-            const main = async () => {
-                console.log('main');
-
-                const successCallback = position => {
-                    console.log('success', position);
-                    staticLoadPlaces().forEach(renderPlace);
-                };
-
-                const errorCallback = error => {
-                    console.log('error', error);
-                    alert(error.message);
-                };
-
-                navigator.geolocation.getCurrentPosition(
-                    successCallback,
-                    errorCallback
-                );
-            };
-            
-            window.onload = main;
-
-        </script>
+           </script>
     </a-scene>
 </body>
 
