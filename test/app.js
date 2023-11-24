@@ -55,8 +55,8 @@ const staticLoadPlaces = () => [
   
     const successCallback = position => {
       console.log('success', position);
+    staticLoadPlaces().forEach(renderPlace);
     console.log(el.getObject3D('line'));
-      staticLoadPlaces().forEach(renderPlace);
     };
   
     const errorCallback = error => {
