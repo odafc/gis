@@ -62,62 +62,62 @@ const staticLoadPlaces = () => [
           longitude: 132.50083017269,
         },
       },
-         {
-        label: 'p10',
-        location: {
-          latitude:   35.1913435772785, 
-          longitude: 132.500820362806,
-        },
-      },
-         {
-        label: 'p11',
-        location: {
-          latitude:   35.1914024807055, 
-          longitude: 132.500816618354,
-        },
-      },
-         {
-        label: 'p12',
-        location: {
-          latitude:   35.1914613896302, 
-          longitude: 132.500810881107,
-        },
-      },
-        {
-        label: 'p13',
-        location: {
-          latitude:   35.1915088032616, 
-          longitude: 132.500821039307,
-        },
-      },
-        {
-        label: 'p14',
-        location: {
-          latitude:   35.1915496567924, 
-          longitude: 132.500837149107,
-        },
-      },
-            {
-        label: 'p15',
-        location: {
-          latitude:   35.1915937161315, 
-          longitude: 132.500877185855,
-        },
-      },
-            {
-        label: 'p16',
-        location: {
-          latitude:   35.1916180896453, 
-          longitude:  132.500937070199,
-        },
-      },
-            {
-        label: 'p17',
-        location: {
-          latitude:   35.1916276905086, 
-          longitude:  132.501014829423,
-        },
-      },
+      //    {
+      //   label: 'p10',
+      //   location: {
+      //     latitude:   35.1913435772785, 
+      //     longitude: 132.500820362806,
+      //   },
+      // },
+      //    {
+      //   label: 'p11',
+      //   location: {
+      //     latitude:   35.1914024807055, 
+      //     longitude: 132.500816618354,
+      //   },
+      // },
+      //    {
+      //   label: 'p12',
+      //   location: {
+      //     latitude:   35.1914613896302, 
+      //     longitude: 132.500810881107,
+      //   },
+      // },
+      //   {
+      //   label: 'p13',
+      //   location: {
+      //     latitude:   35.1915088032616, 
+      //     longitude: 132.500821039307,
+      //   },
+      // },
+      //   {
+      //   label: 'p14',
+      //   location: {
+      //     latitude:   35.1915496567924, 
+      //     longitude: 132.500837149107,
+      //   },
+      // },
+      //       {
+      //   label: 'p15',
+      //   location: {
+      //     latitude:   35.1915937161315, 
+      //     longitude: 132.500877185855,
+      //   },
+      // },
+      //       {
+      //   label: 'p16',
+      //   location: {
+      //     latitude:   35.1916180896453, 
+      //     longitude:  132.500937070199,
+      //   },
+      // },
+      //       {
+      //   label: 'p17',
+      //   location: {
+      //     latitude:   35.1916276905086, 
+      //     longitude:  132.501014829423,
+      //   },
+      // },
 
   ];
   
