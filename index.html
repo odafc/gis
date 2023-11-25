@@ -5,20 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>      
-
-           <style>
-      #debug {
-        position: fixed;
-        z-index: 10000;
-        background-color: #fff;
-        padding: 10px;
-        top: 0;
-        left: 0;
-        display: block;
-      }
-    </style>
-        
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>             
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -38,19 +25,10 @@
             value=""
             scale="30 30 30"
             position="0 55 0"
-            gps-entity-place="latitude: 35.20344457215383; longitude: 132.4895078991471;"
+            gps-entity-place="latitude: ; longitude: ;"
         ></a-text>
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
-
-            <script>
-        const $text = document.getElementById('text');
-         $text.addEventListener('gps-entity-place-update-positon', (event) => {
-          document.getElementById('debug').textContent = '${event.detail.distance}m';
-          text.setAttribute('value', text.getAttribute('distanceMsg') + 'left');
-        });
-        window.onload = main;
-    </script>
     </body>
 </html>
 
