@@ -9,6 +9,7 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
+        <div id="debug"></div>
         <a-scene
             vr-mode-ui="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
@@ -18,11 +19,29 @@
         >
           <a-box
             material="color: red"
-<!--             gps-entity-place="latitude: ; longitude: ;" -->
+            gps-entity-place="latitude: 35.20344457215383; longitude: 132.4895078991471;"
             scale="5 5 5"
           ></a-box>
+        <a-text
+            id="text"
+            value=""
+            look-at="[gps-camera]"
+            scale="30 30 30"
+            position="0 55 0"
+            gps-entity-place="latitude: 35.20344457215383; longitude: 132.4895078991471;"
+        ></a-text>
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
+
+            <script>
+      window.addEventListener('load', () => {
+        const text = document.getElementById('text');
+        text.addEventListener('gps-entity-place-update-positon', (event) => {
+          document.getElementById('debug').textContent = `あと${event.detail.distance}m`;
+          text.setAttribute('value', text.getAttribute('distanceMsg') + ' left');
+        });
+      });
+    </script>
     </body>
 </html>
 
