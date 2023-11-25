@@ -34,11 +34,6 @@ const renderPlace = ({ location }) => {
   });
   $scene.appendChild($entity);
 };
-        const text = document.getElementById('text');
-        text.addEventListener('gps-entity-place-update-positon', (event) => {
-          document.getElementById('debug').textContent = `${event.detail.distance}m`;
-          text.setAttribute('value', text.getAttribute('distanceMsg') + ' left');
-        });
 
 const main = async () => {
   console.log('main');
