@@ -44,14 +44,12 @@
         </a-scene>
 
             <script>
-      window.addEventListener('load', () => {
         const text = document.getElementById('text');
         text.addEventListener('gps-entity-place-update-positon', (event) => {
           document.getElementById('debug').textContent = '${event.detail.distance}m';
           text.setAttribute('value', text.getAttribute('distanceMsg') + 'left');
         });
-      });
-    window.onload = main;
+        window.onload = main;
     </script>
     </body>
 </html>
