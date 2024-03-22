@@ -4,9 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -267,9 +265,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "2"
       },
       "geometry": {
         "type": "Polygon",
@@ -586,9 +582,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -645,9 +639,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "4"
       },
       "geometry": {
         "type": "Polygon",
@@ -704,9 +696,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -903,9 +893,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "6"
       },
       "geometry": {
         "type": "Polygon",
@@ -990,9 +978,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "7"
       },
       "geometry": {
         "type": "Polygon",
@@ -1073,9 +1059,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "8"
       },
       "geometry": {
         "type": "Polygon",
@@ -1236,9 +1220,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "9"
       },
       "geometry": {
         "type": "Polygon",
@@ -1295,9 +1277,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "10"
       },
       "geometry": {
         "type": "Polygon",
@@ -1426,9 +1406,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "11"
       },
       "geometry": {
         "type": "Polygon",
@@ -1477,9 +1455,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "12"
       },
       "geometry": {
         "type": "Polygon",
@@ -1632,9 +1608,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "13"
       },
       "geometry": {
         "type": "Polygon",
@@ -1855,9 +1829,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "14"
       },
       "geometry": {
         "type": "Polygon",
@@ -1930,9 +1902,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "15"
       },
       "geometry": {
         "type": "Polygon",
@@ -2017,9 +1987,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "16"
       },
       "geometry": {
         "type": "Polygon",
@@ -2100,9 +2068,7 @@
     {
       "type": "Feature",
       "properties": {
-        "fill-opacity": 0,
-        "stroke-opacity": 1,
-        "stroke": "#ff0000"
+        "name": "17"
       },
       "geometry": {
         "type": "Polygon",
