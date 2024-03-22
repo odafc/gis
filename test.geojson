@@ -4,7 +4,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -265,7 +264,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "2"
+        "name": "長久町延里 678-1 外5"
       },
       "geometry": {
         "type": "Polygon",
@@ -582,7 +581,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -639,7 +637,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "4"
       },
       "geometry": {
         "type": "Polygon",
@@ -696,7 +693,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -893,7 +889,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "6"
       },
       "geometry": {
         "type": "Polygon",
@@ -978,7 +973,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "7"
       },
       "geometry": {
         "type": "Polygon",
@@ -1059,7 +1053,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "8"
       },
       "geometry": {
         "type": "Polygon",
@@ -1220,7 +1213,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "9"
       },
       "geometry": {
         "type": "Polygon",
@@ -1277,7 +1269,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "10"
       },
       "geometry": {
         "type": "Polygon",
@@ -1406,7 +1397,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "11"
       },
       "geometry": {
         "type": "Polygon",
@@ -1455,7 +1445,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "12"
       },
       "geometry": {
         "type": "Polygon",
@@ -1608,7 +1597,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "13"
       },
       "geometry": {
         "type": "Polygon",
@@ -1829,7 +1817,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "14"
       },
       "geometry": {
         "type": "Polygon",
@@ -1902,7 +1889,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "15"
       },
       "geometry": {
         "type": "Polygon",
@@ -1987,7 +1973,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "16"
       },
       "geometry": {
         "type": "Polygon",
@@ -2068,7 +2053,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "17"
       },
       "geometry": {
         "type": "Polygon",
