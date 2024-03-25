@@ -156,20 +156,6 @@
 	    let name = p.name, desc = p.description;
 	    let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
 	    layer.bindPopup(popup);	
-
-		      layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight
-      });
-
-      function highlightFeature(e) {
-        var layer = e.target;
-        layer.setStyle({color: '#ff0000', fillColor: '#ff0000'});
-      }
-
-      function resetHighlight(e) {
-        frontera.resetStyle(e.target);
-      }
 	}	
     }
 });
