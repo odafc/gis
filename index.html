@@ -1,85 +1,65 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>WebGIS</title>
-        <link
-            rel="stylesheet"
-            href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-            crossorigin=""
-        />
-        <script
-            src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin=""
-        ></script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>LocalGIS</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
         <link rel="stylesheet" href="https://loca.ash.jp/leaflet/sample/js/leaflet_opacity.css" />
         <script src="https://loca.ash.jp/leaflet/sample/js/leaflet_opacity.js"></script>
-        <style>
-            body {
-                margin: 0px;
-                padding: 0px;
-            }
-            #mapid {
-                height: 100vh;
-            }
-            #beam {
-                position: fixed;
-                left: 0;
-                top: 0;
-    z-index: 1000;
-    opacity: 0.3;
-    height: 0;
-    width: 20px;
-    margin: 10px 10px auto;
-    border-top: 46px solid #11b;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    transform-origin: bottom;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="mapid"></div>
+        <script src="https://odafc.github.io/gis/test.geojson" charset="utf-8"></script>
 
-        <input
-            id="permitGeolocation"
-            type="button"
-            value="iOS>方位取得を許可"
-            style="position: fixed; top: 10px; left: 100px; z-index: 1000"
-            onclick="permitGeolocation()"
-        />
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
 
-        <input
-            type="text"
-            id="os"
-            style="position: fixed; top: 40px; left: 100px; z-index: 1000; display:none;"
-        />
+        #mapid {
+            height: 100vh;
+        }
 
-        <input
-            type="text"
-            id="degree"
-            style="position: fixed; top: 70px; left: 100px; z-index: 1000; display:none;"
-        />
+        #beam {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            opacity: 0.3;
+            height: 0;
+            width: 20px;
+            margin: 10px auto;
+            border-top: 40px solid #11b;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            transform-origin: bottom;
+        }
+    </style>
+</head>
 
-        <input
-            type="text"
-            id="iPhone"
-            style="position: fixed; top: 100px; left: 100px; z-index: 1000; display:none;"
-        />
-        <input
-            type="text"
-            id="accuracy"
-            style="position: fixed; top: 130px; left: 100px; z-index: 1000; display:none;"
-        />
+<body>
+    <div id="mapid"></div>
 
-        <div id="heading"></div>
-        <div id="beam"></div>
+    <input id="permitGeolocation" type="button" value="iOS>方位取得を許可"
+        style="position: fixed; top: 10px; left: 100px; z-index: 1000" onclick="permitGeolocation()" />
 
-         <script type="text/javascript">
+<input type="text" id="os" style="position: fixed; top: 40px; left: 100px; z-index: 1000" />
+
+<!--     <input type="text" id="degree" style="position: fixed; top: 70px; left: 100px; z-index: 1000" />
+
+    <input type="text" id="iPhone" style="position: fixed; top: 100px; left: 100px; z-index: 1000" />
+    <input type="text" id="accuracy" style="position: fixed; top: 130px; left: 100px; z-index: 1000" /> -->
+
+    <div id="heading"></div>
+    <div id="beam"></div>
+
+    <script type="text/javascript">
         let os;
         if (
             navigator.userAgent.indexOf("iPhone") > 0 ||
@@ -165,39 +145,19 @@
             }),
         ];
 
-        var baseCtl = { // ベースマップ切替ボタンの定義
-            "地理院標準地図": baseMap[0],
-        };
 
-        var overCtl = { // オーバーレイマップ切替ボタンの定義
-            "基本図": overMap[0],
-            "Google最新写真": overMap[1],
-            "地理院最新写真": overMap[2],
-            "1970年頃写真": overMap[3],
-            "1960年頃写真": overMap[4],
-        };
+        var gj = L.geoJson(polygonUmap, {
+    style: function (feature) {
+	return {fillColor: "#00f", color: "#00f", weight: 3 , opacity: 0.6};
+    },
+    onEachFeature: function(j, layer) {
+	let p = j.properties;
+	if (p) {
+	    let name = p.name, desc = p.description;
+	    let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
+	    layer.bindPopup(popup);	
 
-        // Map初期化
-        function initMap(initPos) {
-            // #mapidにOSMタイルマップをレンダリング
-            map = L.map("mapid").setView(
-                [initPos.coords.latitude, initPos.coords.longitude],
-                17
-            );
-
-    baseMap[0].addTo(map);
-	L.control.scale({imperial:false, position:'bottomleft'}).addTo(map); // 目盛表示
-	L.control.opacityLayers(baseCtl, overCtl, {collapsed:true}).addTo(map); // 透過付マップ切替
-
-
-    
-    fetch('https://odafc.github.io/gis/test.geojson', {method: 'GET'}).then(response => response.text()).then(text => {
-  var data = JSON.parse(text);
-  var frontera = L.geoJson(data, {
-    style: {color: '#00f', weight: 3, opacity: 0.6, fillOpacity: 0.1, fillColor: '#00f'},
-    onEachFeature: function (feat, layer) {
-      layer.bindPopup (feat.properties.name);
-      layer.on({
+		      layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight
       });
@@ -210,10 +170,41 @@
       function resetHighlight(e) {
         frontera.resetStyle(e.target);
       }
-
+	}	
     }
-  }).addTo(map);
 });
+        
+
+        var baseCtl = { // ベースマップ切替ボタンの定義
+            "地理院標準地図": baseMap[0],
+        };
+
+        var overCtl = { // オーバーレイマップ切替ボタンの定義
+            "基本図": overMap[0],
+            "Google最新写真": overMap[1],
+            "地理院最新写真": overMap[2],
+            "1970年頃写真": overMap[3],
+            "1960年頃写真": overMap[4],
+            "テスト": gj,
+        };
+
+
+
+
+        // Map初期化
+        function initMap(initPos) {
+            // #mapidにOSMタイルマップをレンダリング
+            map = L.map("mapid").setView(
+                [initPos.coords.latitude, initPos.coords.longitude],
+                17
+            );
+
+    baseMap[0].addTo(map);
+	L.control.scale({imperial:false, position:'bottomleft'}).addTo(map); // 目盛表示
+	L.control.zoom({position:'bottomleft'}).addTo(map); // ズーム制御
+	L.control.opacityLayers(baseCtl, overCtl, {collapsed:true}).addTo(map); // 透過付マップ切替
+
+
 
 
             // 現在地緯度経度を継続取得
@@ -247,7 +238,7 @@
             }
             // 現在地circle描画
             human = L.circle([latitude, longitude], {
-            	color: "#fff",
+                color: "#fff",
                 fillColor: "blue",
                 fillOpacity: 1.0,
                 radius: 10
@@ -338,5 +329,6 @@
                 .catch(console.error);
         }
     </script>
-    </body>
+</body>
+
 </html>
