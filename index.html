@@ -191,7 +191,7 @@
 
 
     
-    fetch('https://odafc.github.io/ar/test.geojson', {method: 'GET'}).then(response => response.text()).then(text => {
+    fetch('https://odafc.github.io/gis/test.geojson', {method: 'GET'}).then(response => response.text()).then(text => {
   var data = JSON.parse(text);
   var frontera = L.geoJson(data, {
     style: {color: '#00f', weight: 3, opacity: 0.6, fillOpacity: 0.1, fillColor: '#00f'},
