@@ -185,10 +185,10 @@ function moveMapFollowingHuman(latitude, longitude, heading) {
 }
 
 function detectDirection(e) {
-	let absolute = event.absolute;
-	let alpha = event.alpha;
-	let beta = event.beta;
-	let gamma = event.gamma;
+	// let absolute = event.absolute;
+	// let alpha = event.alpha;
+	// let beta = event.beta;
+	// let gamma = event.gamma;
 
 	let degrees;
 	if (os == "iphone") {
