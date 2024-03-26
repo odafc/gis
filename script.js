@@ -62,6 +62,9 @@ var overMap = [ // オーバーレイマップの定義
 	L.tileLayer("./kihon/{z}/{x}/{y}.png", {
 		minZoom: 2, maxZoom: 19
 	}),
+	L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+		minZoom: 2, maxZoom: 18
+	}),
 	L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
 		minZoom: 2, maxZoom: 18
 	}),
@@ -119,10 +122,11 @@ var baseCtl = { // ベースマップ切替ボタンの定義
 
 var overCtl = { // オーバーレイマップ切替ボタンの定義
 	"基本図": overMap[0],
-	"Google最新写真": overMap[1],
-	"地理院最新写真": overMap[2],
-	"1970年頃写真": overMap[3],
-	"1960年頃写真": overMap[4],
+	"Google地図": overMap[1],
+	"Google最新写真": overMap[2],
+	"地理院最新写真": overMap[3],
+	"1970年頃写真": overMap[4],
+	"1960年頃写真": overMap[5],
 	"任意のポリゴン": gj,
 	"字等別境界": oda,
 };
