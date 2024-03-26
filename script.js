@@ -205,10 +205,10 @@ function moveMapFollowingHuman(latitude, longitude, heading) {
 		beam.style.display = "none";
 	}
 
-	if (os != "iphone" ) {
-		const iosbotton = document.querySelector(".iosb");
-		iosbotton.style.display = "none";
-	}
+	// if (os != "iphone" ) {
+	// 	const iosbotton = document.querySelector(".iosb");
+	// 	iosbotton.style.display = "none";
+	// }
 }
 
 
