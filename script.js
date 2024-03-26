@@ -52,8 +52,7 @@ function init() {
 
 var baseMap = [ // ベースマップの定義
 	L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
-		attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html'"
-			+ " target='_blank'>地理院標準地図</a>", minZoom: 2, maxZoom: 18
+		minZoom: 2, maxZoom: 18
 	}),
 
 ];
@@ -69,20 +68,16 @@ var overMap = [ // オーバーレイマップの定義
 		minZoom: 2, maxZoom: 18
 	}),
 	L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg", {
-		attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html'"
-			+ " target='_blank'>地理院最新写真</a>", minZoom: 2, maxZoom: 18
+		minZoom: 2, maxZoom: 18
 	}),
 	L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/gazo1/{z}/{x}/{y}.jpg", {
-		attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html'"
-			+ " target='_blank'>1970年代写真</a>", minZoom: 10, maxZoom: 17
+		minZoom: 10, maxZoom: 17
 	}),
 	L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/ort_old10/{z}/{x}/{y}.png", {
-		attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html'"
-			+ " target='_blank'>1960年代写真</a>", minZoom: 2, maxZoom: 17
+		minZoom: 2, maxZoom: 17
 	}),
 	L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png", {
-		attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html'"
-			+ " target='_blank'>色別標高図</a>", minZoom: 5, maxZoom: 16, opacity: 0.2
+		minZoom: 5, maxZoom: 16
 	}),
 ];
 
