@@ -100,7 +100,7 @@ var gj = L.geoJson(polygonUmap, {
 
 var oda = L.geoJson(nameUoda, {
 	style: function (feature) {
-		return { fillColor: "#f00", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
+		return { fillColor: "#fff", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0 , };
 	},
 	onEachFeature: function (j, layer) {
 		let p = j.properties;
