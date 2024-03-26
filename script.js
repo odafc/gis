@@ -85,17 +85,31 @@ var overMap = [ // オーバーレイマップの定義
 
 
 var gj = L.geoJson(polygonUmap, {
-style: function (feature) {
-return {fillColor: "#00f", color: "#00f", weight: 3 , opacity: 0.6 , fillOpacity: 0.1,};
-},
-onEachFeature: function(j, layer) {
-let p = j.properties;
-if (p) {
-let name = p.name, desc = p.description;
-let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
-layer.bindPopup(popup);	
-}	
-}
+	style: function (feature) {
+		return { fillColor: "#00f", color: "#00f", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
+	},
+	onEachFeature: function (j, layer) {
+		let p = j.properties;
+		if (p) {
+			let name = p.name, desc = p.description;
+			let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
+			layer.bindPopup(popup);
+		}
+	}
+});
+
+var oda = L.geoJson(nameUoda, {
+	style: function (feature) {
+		return { fillColor: "#f00", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
+	},
+	onEachFeature: function (j, layer) {
+		let p = j.properties;
+		if (p) {
+			let name = p.name, desc = p.description;
+			let popup = "<h3>" + name + "</h3>";
+			layer.bindPopup(popup);
+		}
+	}
 });
 
 
@@ -109,7 +123,8 @@ var overCtl = { // オーバーレイマップ切替ボタンの定義
 	"地理院最新写真": overMap[2],
 	"1970年頃写真": overMap[3],
 	"1960年頃写真": overMap[4],
-"任意のポリゴン": gj,
+	"任意のポリゴン": gj,
+	"字等別境界": oda,
 };
 
 
@@ -123,9 +138,9 @@ function initMap(initPos) {
 		17
 	);
 
-baseMap[0].addTo(map);
-L.control.scale({imperial:false, position:'bottomleft'}).addTo(map); // 目盛表示
-L.control.opacityLayers(baseCtl, overCtl, {collapsed:true}).addTo(map); // 透過付マップ切替
+	baseMap[0].addTo(map);
+	L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map); // 目盛表示
+	L.control.opacityLayers(baseCtl, overCtl, { collapsed: true }).addTo(map); // 透過付マップ切替
 
 
 
@@ -149,7 +164,7 @@ L.control.opacityLayers(baseCtl, overCtl, {collapsed:true}).addTo(map); // 透�
 		}
 	);
 
-	
+
 }
 
 // 現在地変更ハンドラ
@@ -185,10 +200,6 @@ function moveMapFollowingHuman(latitude, longitude, heading) {
 }
 
 function detectDirection(e) {
-	// let absolute = event.absolute;
-	// let alpha = event.alpha;
-	// let beta = event.beta;
-	// let gamma = event.gamma;
 
 	let degrees;
 	if (os == "iphone") {
@@ -250,4 +261,4 @@ function permitGeolocation() {
 			}
 		})
 		.catch(console.error);
-	}
+}
