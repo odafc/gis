@@ -195,15 +195,15 @@ function moveMapFollowingHuman(latitude, longitude, heading) {
 	// 画面の上端から、要素の上端までの距離
 	var y = clientRect.top;
 
-	if (os != "pc") {
+	// if (os != "pc") {
 		let beam = document.querySelector("#beam");
 		let h = beam.clientHeight;
 		let w = beam.clientWidth;
 		beam.style.top = y - 40 + "px";
 		beam.style.left = x - 30 + "px";
-	} else {
-		beam.style.display = "none";
-	}
+	// } else {
+	// 	beam.style.display = "none";
+	// }
 
 	// if (os != "iphone" ) {
 	// 	const iosbotton = document.querySelector(".iosb");
