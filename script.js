@@ -58,7 +58,7 @@ var baseMap = [ // ベースマップの定義
 ];
 
 var overMap = [ // オーバーレイマップの定義
-	L.tileLayer("./xyz/{z}/{x}/{y}.png", {
+	L.tileLayer("https://ariill-design.jp/xyz/kihon/xyz/{z}/{x}/{y}.png", {
 		minZoom: 2, maxZoom: 19
 	}),
 	L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
