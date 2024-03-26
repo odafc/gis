@@ -204,6 +204,11 @@ function moveMapFollowingHuman(latitude, longitude, heading) {
 	} else {
 		beam.style.display = "none";
 	}
+
+	if (os != "iphone" ) {
+		const iosbotton = document.querySelector(".iosb");
+		iosbotton.style.display = "none";
+	}
 }
 
 
