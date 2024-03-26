@@ -103,7 +103,7 @@ var gj = L.geoJson(polygonUmap, {
 
 var oda = L.geoJson(nameUoda, {
 	style: function (feature) {
-		return { fillColor: "#fff", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0 , };
+		return { fillColor: "#fff", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0, };
 	},
 	onEachFeature: function (j, layer) {
 		let p = j.properties;
@@ -171,6 +171,7 @@ function initMap(initPos) {
 
 }
 
+
 // 現在地変更ハンドラ
 function moveMapFollowingHuman(latitude, longitude, heading) {
 
@@ -187,6 +188,9 @@ function moveMapFollowingHuman(latitude, longitude, heading) {
 	}).addTo(map);
 	human._path.id = "human";
 
+
+
+
 	// 現在地を示すエレメントの画面位置座標を取得
 	var clientRect = human._path.getBoundingClientRect();
 
@@ -196,12 +200,17 @@ function moveMapFollowingHuman(latitude, longitude, heading) {
 	// 画面の上端から、要素の上端までの距離
 	var y = clientRect.top;
 
-	let beam = document.querySelector("#beam");
-	let h = beam.clientHeight;
-	let w = beam.clientWidth;
-	beam.style.top = y - 40 + "px";
-	beam.style.left = x - 30 + "px";
+	if (os != "pc") {
+		let beam = document.querySelector("#beam");
+		let h = beam.clientHeight;
+		let w = beam.clientWidth;
+		beam.style.top = y - 40 + "px";
+		beam.style.left = x - 30 + "px";
+	} else {
+		beam.style.display = "none";
+	}
 }
+
 
 function detectDirection(e) {
 
@@ -213,6 +222,7 @@ function detectDirection(e) {
 	}
 	document.querySelector("#degree").value = degrees;
 
+
 	let beam = document.querySelector("#beam");
 	beam.style.transform = "rotate(" + degrees + "deg)";
 
@@ -221,6 +231,7 @@ function detectDirection(e) {
 
 	let accuracy = document.querySelector("#accuracy");
 	accuracy.value = e.webkitCompassAccuracy;
+
 }
 
 function compassHeading(alpha, beta, gamma) {
