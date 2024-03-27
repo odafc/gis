@@ -1,0 +1,8 @@
+.leaflet-control-layers-opacity {
+	appearance: none;
+	width: 107px;
+	height: 5px;
+	margin: 5px 1px;
+	background: #aaaaaa;
+	border-radius: 5px;
+}
