@@ -103,7 +103,7 @@
    });
 	
    map.locate({
-	   watch: false,
+	   watch: true,
 	   locate: true,
 	   setView: true,
 	   enableHighAccuracy: true
