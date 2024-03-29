@@ -1,4 +1,4 @@
-var map = L.map('mapid').setView([35.1904, 132.5015], 14);
+var map = L.map('mapid').setView([35.1904, 132.5015], 13);
 
         var baseMap = [ // ベースマップの定義
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
