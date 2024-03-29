@@ -323,9 +323,9 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
       showPopup: true,
       strings: {
         title: "Show me where I am",
-        metersUnit: "meters",
+        metersUnit: "m",
         feetUnit: "feet",
-        popup: "You are within {distance} {unit} from this point",
+        popup: "この地点から {distance} {unit} 以内にいます",
         outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
       },
       /** The default options passed to leaflets locate method. */
