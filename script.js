@@ -8,13 +8,16 @@ var map = L.map('mapid').setView([35.1904, 132.5015], 12);
         ];
 
         var overMap = [ // オーバーレイマップの定義
-            L.tileLayer("https://ariill-design.jp/xyz/kihon/{z}/{x}/{y}.png", {
+            L.tileLayer("../xyz/kihon/{z}/{x}/{y}.png", {
                 minZoom: 2, maxZoom: 19
             }),
             L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
                 minZoom: 2, maxZoom: 18
             }),
             L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
+                minZoom: 2, maxZoom: 18
+            }),
+            L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg", {
                 minZoom: 2, maxZoom: 18
             }),
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg", {
@@ -69,9 +72,10 @@ var map = L.map('mapid').setView([35.1904, 132.5015], 12);
             "基本図": overMap[0],
             "Google地図": overMap[1],
             "Google最新写真": overMap[2],
-            "地理院最新写真": overMap[3],
-            "1970年頃写真": overMap[4],
-            "1960年頃写真": overMap[5],
+            "Esri航空写真": overMap[3],
+            "地理院最新写真": overMap[4],
+            "1970年頃写真": overMap[5],
+            "1960年頃写真": overMap[6],
             "任意のポリゴン": gj,
             "字等別境界": oda,
         };
