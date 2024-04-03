@@ -1,4 +1,5 @@
-var map = L.map('mapid').setView([35.1904, 132.5015], 12);
+var map = L.map('mapid').setView([35.161, 132.435], 17);
+// var map = L.map('mapid').setView([35.105, 132.340], 15);
 
         var baseMap = [ // ベースマップの定義
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
@@ -8,8 +9,8 @@ var map = L.map('mapid').setView([35.1904, 132.5015], 12);
         ];
 
         var overMap = [ // オーバーレイマップの定義
-            L.tileLayer("https://ariill-design.jp/xyz/kihon/{z}/{x}/{y}.png", {
-                minZoom: 11, maxZoom: 19
+            L.tileLayer("./xyz/kihon/{z}/{x}/{y}.png", {
+                minZoom: 15, maxZoom: 19
             }),
             L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
                 minZoom: 2, maxZoom: 18
@@ -35,18 +36,18 @@ var map = L.map('mapid').setView([35.1904, 132.5015], 12);
         ];
 
 
-        var gj = L.geoJson(polygonUmap, {
+        var gj = L.geoJson(kawakita, {
             style: function (feature) {
-                return { fillColor: "#00f", color: "#00f", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
+                return { fillColor: "#00f", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
             },
-            onEachFeature: function (j, layer) {
-                let p = j.properties;
-                if (p) {
-                    let name = p.name, desc = p.description;
-                    let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
-                    layer.bindPopup(popup);
-                }
-            }
+            // onEachFeature: function (j, layer) {
+            //     let p = j.properties;
+            //     if (p) {
+            //         let name = p.name, desc = p.description;
+            //         let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
+            //         layer.bindPopup(popup);
+            //     }
+            // }
         });
 
         var oda = L.geoJson(nameUoda, {
@@ -76,7 +77,7 @@ var map = L.map('mapid').setView([35.1904, 132.5015], 12);
             "地理院最新写真": overMap[4],
             "1970年頃写真": overMap[5],
             "1960年頃写真": overMap[6],
-            "任意のポリゴン": gj,
+            "川北線": gj,
             "字等別境界": oda,
         };
 
