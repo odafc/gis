@@ -19,7 +19,7 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
                 minZoom: 2, maxZoom: 19
             }),
             L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg", {
-                minZoom: 2, maxZoom: 19
+                minZoom: 2, maxZoom: 18
             }),
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg", {
                 minZoom: 2, maxZoom: 18
