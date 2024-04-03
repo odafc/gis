@@ -1,4 +1,4 @@
-var map = L.map('mapid').setView([35.161, 132.435], 17);
+var map = L.map('mapid').setView([35.161, 132.435], 15);
 // var map = L.map('mapid').setView([35.105, 132.340], 15);
 
         var baseMap = [ // ベースマップの定義
