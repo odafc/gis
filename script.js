@@ -9,7 +9,7 @@ var map = L.map('mapid').setView([35.1904, 132.5015], 12);
 
         var overMap = [ // オーバーレイマップの定義
             L.tileLayer("https://ariill-design.jp/xyz/kihon/{z}/{x}/{y}.png", {
-                minZoom: 2, maxZoom: 19
+                minZoom: 11, maxZoom: 19
             }),
             L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
                 minZoom: 2, maxZoom: 18
