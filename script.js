@@ -50,19 +50,19 @@ var map = L.map('mapid').setView([35.161, 132.435], 17);
             // }
         });
 
-        var oda = L.geoJson(nameUoda, {
-            style: function (feature) {
-                return { fillColor: "#fff", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0, };
-            },
-            onEachFeature: function (j, layer) {
-                let p = j.properties;
-                if (p) {
-                    let name = p.name, desc = p.description;
-                    let popup = "<h3>" + name + "</h3>";
-                    layer.bindPopup(popup);
-                }
-            }
-        });
+        // var oda = L.geoJson(nameUoda, {
+        //     style: function (feature) {
+        //         return { fillColor: "#fff", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0, };
+        //     },
+        //     onEachFeature: function (j, layer) {
+        //         let p = j.properties;
+        //         if (p) {
+        //             let name = p.name, desc = p.description;
+        //             let popup = "<h3>" + name + "</h3>";
+        //             layer.bindPopup(popup);
+        //         }
+        //     }
+        // });
 
 
         var baseCtl = { // ベースマップ切替ボタンの定義
@@ -78,7 +78,7 @@ var map = L.map('mapid').setView([35.161, 132.435], 17);
             "1970年頃写真": overMap[5],
             "1960年頃写真": overMap[6],
             "川北線": gj,
-            "字等別境界": oda,
+            // "字等別境界": oda,
         };
 
 
