@@ -12,7 +12,7 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
             L.tileLayer("https://ariill-design.jp/xyz/kihon/{z}/{x}/{y}.png", {
                 minZoom: 11, maxZoom: 19
             }),
-            L.tileLayer("https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+            L.tileLayer("https://cm02.mapion.co.jp/m2/tile/{z}/{x}/{y}.png?usr=atlas_org&amp;v=2.6", {
                 minZoom: 2, maxZoom: 19
             }),
             L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
@@ -72,7 +72,7 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
         var overCtl = { // オーバーレイマップ切替ボタンの定義
             "川北線": gj,
             "基本図": overMap[0],
-            "Google地図": overMap[1],
+            "マピオン": overMap[1],
             "Google最新写真": overMap[2],
             "Esri航空写真": overMap[3],
             "地理院最新写真": overMap[4],
