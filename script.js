@@ -71,14 +71,13 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
         };
 
         var overCtl = { // オーバーレイマップ切替ボタンの定義
+            "川北線": gj,
             "基本図": overMap[0],
             "Google最新写真": overMap[1],
             "Esri航空写真": overMap[2],
             "地理院最新写真": overMap[3],
             "1970年頃写真": overMap[4],
             "1960年頃写真": overMap[5],
-            "川北線": gj,
-            "字等別境界": oda,
         };
 
 
