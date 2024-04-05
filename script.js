@@ -5,15 +5,15 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
                 minZoom: 2, maxZoom: 18
             }),
-             L.tileLayer("https://cm02.mapion.co.jp/m2/tile/{z}/{x}/{y}.png?usr=atlas_org&amp;v=2.6", {
-                minZoom: 2, maxZoom: 19
-            }),
 
         ];
 
         var overMap = [ // オーバーレイマップの定義
             L.tileLayer("https://ariill-design.jp/xyz/kihon/{z}/{x}/{y}.png", {
                 minZoom: 11, maxZoom: 19
+            }),
+            L.tileLayer("https://cm02.mapion.co.jp/m2/tile/{z}/{x}/{y}.png?usr=atlas_org&amp;v=2.6", {
+                minZoom: 2, maxZoom: 19
             }),
             L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
                 minZoom: 2, maxZoom: 19
@@ -67,19 +67,18 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
 
         var baseCtl = { // ベースマップ切替ボタンの定義
             "地理院標準地図": baseMap[0],
-            "マピオン": baseMap[1],
         };
-
         var overCtl = { // オーバーレイマップ切替ボタンの定義
             "川北線": gj,
             "基本図": overMap[0],
-            "Google最新写真": overMap[1],
-            "Esri航空写真": overMap[2],
-            "地理院最新写真": overMap[3],
-            "1970年頃写真": overMap[4],
-            "1960年頃写真": overMap[5],
+            "マピオン": overMap[1],
+            "Google最新写真": overMap[2],
+            "Esri航空写真": overMap[3],
+            "地理院最新写真": overMap[4],
+            "1970年頃写真": overMap[5],
+            "1960年頃写真": overMap[6],
+            // "字等別境界": oda,
         };
-
 
 
         baseMap[0].addTo(map);
