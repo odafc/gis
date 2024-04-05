@@ -3,11 +3,11 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
 
         var baseMap = [ // ベースマップの定義
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
-                minZoom: 2, maxZoom: 18
+                minZoom: 5, maxZoom: 18
             }),
                 
 　          L.tileLayer("https://cm02.mapion.co.jp/m2/tile/{z}/{x}/{y}.png?usr=atlas_org&amp;v=2.6", {
-                minZoom: 2, maxZoom: 19
+                minZoom: 6, maxZoom: 19
             }),              
 
         ];
