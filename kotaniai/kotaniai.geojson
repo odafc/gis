@@ -12,7 +12,7 @@ var kotaniai =
         {
             "type": "Feature",
             "properties": {
-                "name": null
+                "name": "null"
             },
             "geometry": {
                 "type": "MultiPolygon",
