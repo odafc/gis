@@ -1,5 +1,4 @@
-var map = L.map('mapid').setView([35.161, 132.435], 16);
-// var map = L.map('mapid').setView([35.105, 132.340], 15);
+var map = L.map('mapid').setView([35.192, 132.499], 15);
 
         var baseMap = [ // ベースマップの定義
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
@@ -33,21 +32,6 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
             }),
         ];
 
-
-        var gj = L.geoJson(kawakita, {
-            style: function (feature) {
-                return { fillColor: "#00f", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
-            },
-            // onEachFeature: function (j, layer) {
-            //     let p = j.properties;
-            //     if (p) {
-            //         let name = p.name, desc = p.description;
-            //         let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
-            //         layer.bindPopup(popup);
-            //     }
-            // }
-        });
-
         // var oda = L.geoJson(nameUoda, {
         //     style: function (feature) {
         //         return { fillColor: "#fff", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0, };
@@ -68,7 +52,6 @@ var map = L.map('mapid').setView([35.161, 132.435], 16);
            　"マピオン": baseMap[1],
         };
         var overCtl = { // オーバーレイマップ切替ボタンの定義
-            "川北線": gj,
             "基本図": overMap[0],
             "Google最新写真": overMap[1],
             "Esri航空写真": overMap[2],
