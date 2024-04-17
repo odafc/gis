@@ -39,7 +39,7 @@ var map = L.map('mapid').setView([35.170, 132.476], 15);
                 let p = j.properties;
                 if (p) {
                     let name = p.name, desc = p.description;
-                    let popup = "<h3>" + name + "</h3>" + "<p>" + desc + "</p>";
+                    let popup = "<h3>" + name + "</h3>" ;
                     layer.bindPopup(popup);
                 }
             }
