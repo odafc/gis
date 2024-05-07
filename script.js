@@ -30,6 +30,9 @@ var map = L.map('mapid').setView([35.192, 132.499], 15);
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/ort_old10/{z}/{x}/{y}.png", {
                 minZoom: 2, maxZoom: 17
             }),
+            L.tileLayer("https://mars.navitime.co.jp/mars/tile/v1/satellite/256/{z}/{y}/{x}", {
+                minZoom: 2, maxZoom: 19
+            }),
         ];
 
         // var oda = L.geoJson(nameUoda, {
@@ -55,6 +58,7 @@ var map = L.map('mapid').setView([35.192, 132.499], 15);
             "基本図": overMap[0],
             "Google最新写真": overMap[1],
             "Esri航空写真": overMap[2],
+            "NTT航空写真": overMap[6],
             "地理院最新写真": overMap[3],
             "1970年頃写真": overMap[4],
             "1960年頃写真": overMap[5],
