@@ -28,10 +28,13 @@ var map = L.map('mapid').setView([35.122,132.587], 15);
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/ort_old10/{z}/{x}/{y}.png", {
                 minZoom: 2, maxZoom: 17
             }),
+            L.tileLayer("https://mars.navitime.co.jp/mars/tile/v1/satellite/256/{z}/{y}/{x}", {
+                minZoom: 2, maxZoom: 19
+            }),
         ];
 
 
-        var gj = L.geoJson(ikeda, {
+        var gj = L.geoJson(kotaniai, {
             style: function (feature) {
                 return { fillColor: "#00f", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
             },
@@ -50,10 +53,11 @@ var map = L.map('mapid').setView([35.122,132.587], 15);
         };
 
         var overCtl = { // オーバーレイマップ切替ボタンの定義
-            "池田": gj,
+            "小谷合": gj,
             "基本図": overMap[0],
             "Google最新写真": overMap[1],
             "Esri航空写真": overMap[2],
+            "NTT航空写真": overMap[6],
             "地理院最新写真": overMap[3],
             "1970年頃写真": overMap[4],
             "1960年頃写真": overMap[5],
