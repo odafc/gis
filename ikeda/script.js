@@ -41,8 +41,8 @@ var map = L.map('mapid').setView([35.122,132.587], 15);
             onEachFeature: function (j, layer) {
                 let p = j.properties;
                 if (p) {
-                    let name = p.name, desc = p.description;
-                    let popup = "<h3>" + name + "</h3>" ;
+                    let name = p.name, desc = p.name2;
+                    let popup = "<h3>" + name + "</h3>" + "<p>" + name2 + "</p>";
                     layer.bindPopup(popup);
                 }
             }
