@@ -31,7 +31,7 @@ var map = L.map('mapid').setView([35.122,132.587], 15);
         ];
 
 
-        var gj = L.geoJson(kotaniai, {
+        var gj = L.geoJson(ikeda, {
             style: function (feature) {
                 return { fillColor: "#00f", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
             },
@@ -50,7 +50,7 @@ var map = L.map('mapid').setView([35.122,132.587], 15);
         };
 
         var overCtl = { // オーバーレイマップ切替ボタンの定義
-            "小谷合": gj,
+            "池田": gj,
             "基本図": overMap[0],
             "Google最新写真": overMap[1],
             "Esri航空写真": overMap[2],
