@@ -36,7 +36,7 @@ var map = L.map('mapid').setView([ 35.12637 , 132.55919], 15);
 
         var gj = L.geoJson(ikeda, {
             style: function (feature) {
-                return { fillColor: "#00f", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.1, };
+                return { fillColor: "#00f", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.05, };
             },
             onEachFeature: function (j, layer) {
                 let p = j.properties;
