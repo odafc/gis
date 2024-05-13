@@ -53,7 +53,7 @@ var map = L.map('mapid').setView([ 35.12637 , 132.55919], 15);
         };
 
         var overCtl = { // オーバーレイマップ切替ボタンの定義
-            "小谷合": gj,
+            "境界調査": gj,
             "基本図": overMap[0],
             "Google最新写真": overMap[1],
             "Esri航空写真": overMap[2],
