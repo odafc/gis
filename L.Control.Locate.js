@@ -749,8 +749,8 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
         return;
       }
 
-      this.stop();
-      this.options.onLocationError(err, this);
+      // this.stop();
+      // this.options.onLocationError(err, this);
     },
 
     /**
