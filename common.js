@@ -30,10 +30,3 @@
                 minZoom: 2, maxZoom: 19
             }),
         ];
-
-        // add location control to global name space for testing only
-        // on a production site, omit the "lc = "!
-        lc = L.control
-            .locate({
-            })
-            .addTo(map);
