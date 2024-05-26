@@ -76,3 +76,11 @@ var map = L.map('mapid').setView([35.192, 132.499], 15);
                 l[m] : l = l[m] = {} : l[m] = g;
         })();
         pagespeed.CriticalCssLoader.Run();
+
+        // add location control to global name space for testing only
+        // on a production site, omit the "lc = "!
+        lc = L.control
+            .locate({
+            })
+            .addTo(map);
+
