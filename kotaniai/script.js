@@ -15,17 +15,16 @@ var map = L.map('mapid').setView([35.122,132.587], 15);
         });
         var baseCtl = { // ベースマップ切替ボタンの定義
             "地理院標準地図": baseMap[0],
-            "マピオン": baseMap[1],
+           　"マピオン": baseMap[1],
+        　　　"基本図": overMap[2],
         };
-
         var overCtl = { // オーバーレイマップ切替ボタンの定義
-            "基本図": overMap[0],
-            "Google最新写真": overMap[1],
-            "Esri航空写真": overMap[2],
-            "NTT航空写真": overMap[6],
-            "地理院最新写真": overMap[3],
-            "1970年頃写真": overMap[4],
-            "1960年頃写真": overMap[5],
+            "Google最新写真": overMap[0],
+            "Esri航空写真": overMap[1],
+            "NTT航空写真": overMap[5],
+            "地理院最新写真": overMap[2],
+            "1970年頃写真": overMap[3],
+            "1960年頃写真": overMap[4],
         };
 
         var gjson = {
