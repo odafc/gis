@@ -3,7 +3,7 @@ var map = L.map('mapid').setView([35.192, 132.499], 15);
         var baseCtl = { // ベースマップ切替ボタンの定義
             "地理院標準地図": baseMap[0],
            　"マピオン": baseMap[1],
-        　　　"基本図": overMap[2],
+        　　　"基本図": baseMap[2],
         };
         var overCtl = { // オーバーレイマップ切替ボタンの定義
             "Google最新写真": overMap[0],
