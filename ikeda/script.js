@@ -1,39 +1,5 @@
 var map = L.map('mapid').setView([ 35.12735 , 132.56318], 15);
 
-        var baseMap = [ // ベースマップの定義
-            L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
-                minZoom: 5, maxZoom: 18
-            }),
-            L.tileLayer("https://cm02.mapion.co.jp/m2/tile/{z}/{x}/{y}.png?usr=atlas_org&amp;v=2.6", {
-                minZoom: 6, maxZoom: 19
-            }),
-        ];
-
-        var overMap = [ // オーバーレイマップの定義
-            L.tileLayer("https://ariill-design.jp/xyz/kihon/{z}/{x}/{y}.png", {
-                minZoom: 16, maxZoom: 19
-            }),
-            L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
-                minZoom: 2, maxZoom: 19
-            }),
-            L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg", {
-                minZoom: 2, maxZoom: 18
-            }),
-            L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg", {
-                minZoom: 2, maxZoom: 18
-            }),
-            L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/gazo1/{z}/{x}/{y}.jpg", {
-                minZoom: 10, maxZoom: 17
-            }),
-            L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/ort_old10/{z}/{x}/{y}.png", {
-                minZoom: 2, maxZoom: 17
-            }),
-            L.tileLayer("https://mars.navitime.co.jp/mars/tile/v1/satellite/256/{z}/{y}/{x}", {
-                minZoom: 2, maxZoom: 19
-            }),
-        ];
-
-
         var gj = L.geoJson(ikeda, {
             style: function (feature) {
                 return { fillColor: "#00f", color: "#f00", weight: 3, opacity: 0.6, fillOpacity: 0.05, };
@@ -71,11 +37,3 @@ var map = L.map('mapid').setView([ 35.12735 , 132.56318], 15);
         L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map); // 目盛表示
         L.control.layers(null, gjson, {collapsed: false}).addTo(map);// GeoJson
         L.control.opacityLayers(baseCtl, overCtl, { collapsed: true }).addTo(map); // 透過付マップ切替
-
-
-        // add location control to global name space for testing only
-        // on a production site, omit the "lc = "!
-        lc = L.control
-            .locate({
-            })
-            .addTo(map);
