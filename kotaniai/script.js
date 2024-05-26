@@ -35,3 +35,11 @@ var map = L.map('mapid').setView([35.122,132.587], 15);
         L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map); // 目盛表示
         L.control.layers(null, gjson, {collapsed: false}).addTo(map);// GeoJson
         L.control.opacityLayers(baseCtl, overCtl, { collapsed: true }).addTo(map); // 透過付マップ切替
+
+        // add location control to global name space for testing only
+        // on a production site, omit the "lc = "!
+        lc = L.control
+            .locate({
+            })
+            .addTo(map);
+
