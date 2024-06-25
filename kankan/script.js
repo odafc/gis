@@ -1,4 +1,4 @@
-var map = L.map('mapid').setView([35.122672 , 132.586513], 15);
+var map = L.map('mapid').setView([35.122672 , 132.586513], 16);
 
 var gj = L.geoJson(kankan, {
     style: function (feature) {
