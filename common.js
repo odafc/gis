@@ -26,7 +26,4 @@
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/ort_old10/{z}/{x}/{y}.png", {
                 minZoom: 2, maxZoom: 17
             }),
-            L.tileLayer("https://mars.navitime.co.jp/mars/tile/v1/satellite/256/{z}/{y}/{x}", {
-                minZoom: 2, maxZoom: 19
-            }),
         ];
