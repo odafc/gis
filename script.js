@@ -8,7 +8,6 @@ var map = L.map('mapid').setView([35.192, 132.499], 15);
         var overCtl = { // オーバーレイマップ切替ボタンの定義
             "Google最新写真": overMap[0],
             "Esri航空写真": overMap[1],
-            "NTT航空写真": overMap[5],
             "地理院最新写真": overMap[2],
             "1970年頃写真": overMap[3],
             "1960年頃写真": overMap[4],
