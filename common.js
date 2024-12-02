@@ -2,7 +2,7 @@
             L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
                 minZoom: 5, maxZoom: 18
             }),
-            L.tileLayer("https://cm02.mapion.co.jp/m2/tile/{z}/{x}/{y}.png?usr=atlas_org&amp;v=2.6", {
+            L.tileLayer("https://d3a9yephh38bqr.cloudfront.net/EPSG:3857:{z}/{x}/{y}", {
                 minZoom: 6, maxZoom: 19
             }),
          　　L.tileLayer("https://ariill-design.jp/xyz/kihon/{z}/{x}/{y}.png", {
